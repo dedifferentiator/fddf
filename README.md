@@ -2,7 +2,7 @@
 
 _Really_ minimalistic tool for tracking number of file descriptors
 
-![](https://github.com/dedifferentiator/fddf/raw/readme/media/fddf.jpg)
+![](https://github.com/dedifferentiator/fddf/raw/master/media/fddf.jpg)
 
 # Install
 
