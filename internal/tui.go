@@ -12,7 +12,7 @@ import (
 )
 
 //prop proportion towards terminal dimensions
-const prop = 4
+const prop = 3
 
 //title title of plot
 const title = "Number of fd for"
@@ -89,7 +89,7 @@ func newLine(pidd pid, x, y int) Line {
 }
 
 //draw draw an updated plot with new fd added
-func (l *Line) draw(fdNum int) {
+func (l *Line) draw(fdNum int, pidd pid) {
 	if len(l.l.Data) == 0 {
 		log.Fatalln("`impossible` happened, consider opening an issue " +
 			"with \"EDataZero\"")
@@ -98,7 +98,7 @@ func (l *Line) draw(fdNum int) {
 	if l.m < fdNum {
 		l.m = fdNum
 	}
-	l.lg.Title = fmt.Sprintf("%s %d (max: %d) (cur: %d)", title, fdNum, l.m, fdNum)
+	l.lg.Title = fmt.Sprintf("%s %d (max: %d) (cur: %d)", title, pidd, l.m, fdNum)
 	l.l.Data = append(l.l.Data[1:], float64(fdNum))
 
 	ui.Render(l.lg)
@@ -118,7 +118,7 @@ func RunUI(pidd pid) {
 
 	x, y := mkWidgetSize()
 	line := newLine(pidd, x, y)
-	line.draw(fd)
+	line.draw(fd, pidd)
 
 	uiEvents := ui.PollEvents()
 	ticker := time.NewTicker(time.Second).C
@@ -135,7 +135,7 @@ func RunUI(pidd pid) {
 				fd = 0
 			}
 
-			line.draw(fd)
+			line.draw(fd, pidd)
 		}
 	}
 }
