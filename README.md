@@ -1,6 +1,8 @@
 # fddf
 
-Minimalistic tool for tracking number of file descriptors
+_Really_ minimalistic tool for tracking number of file descriptors
+
+![](https://github.com/dedifferentiator/fddf/raw/readme/media/fddf.jpg)
 
 # Install
 
